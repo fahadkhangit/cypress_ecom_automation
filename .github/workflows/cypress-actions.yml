@@ -1,0 +1,32 @@
+name: Run Specific Cypress Test Manually
+
+on:
+  workflow_dispatch:
+    inputs:
+      testFile:
+        description: 'Path to the Cypress test file to run'
+        required: true
+        default: 'cypress/e2e/OSL/OneStream_Tests/1_logintest.cy.js'
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Cypress
+        run: npm install cypress
+
+      - name: Run specified Cypress test file
+        run: npx cypress run --spec ${{ github.event.inputs.testFile }}
+        env:
+          CI: true
