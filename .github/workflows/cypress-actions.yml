@@ -6,7 +6,7 @@ on:
       testFile:
         description: 'Path to the Cypress test file to run'
         required: true
-        default: 'cypress/e2e/OSL/OneStream_Tests/1_logintest.cy.js'
+        default: 'cypress/e2e/Ecom_Project/Ecom_Test_Files/1_Ecom_Test_Suite_POM.cy.js'
 
 jobs:
   cypress-run:
