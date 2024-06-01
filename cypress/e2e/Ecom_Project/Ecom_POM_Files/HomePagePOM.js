@@ -7,6 +7,7 @@ class HomePage
         products_btn: "a[href='/products']",
         cart_btn: "",
         login_btn: "a[href='/login']",
+        logout_btn: "a[href='/logout']",
         contact_btn: "",
         logged_in_as_txt: "li:nth-child(10) a:nth-child(1)",
         homne_btn: "",
@@ -25,21 +26,12 @@ class HomePage
         cy.get(this.elements.logged_in_as_txt).should('exist');
       }
 
-      verifyNegLogin() {
-        cy.get(this.elements.IcorrectCreds_txt).should('exist');
+      logout() {
+        cy.get(this.elements.logout_btn).click();
       }
 
-      navigateToHostedPage() {
-        cy.get(this.elements.left_menu_hosted_btn).click();
-      }
-
-      accessEmbedSetting() {
-        cy.get(this.elements.left_menu_embed_btn).click();
-        cy.get(this.elements.player_setting_txt).should('exist');
-      }
-
-      accessSocials() {
-        cy.get(this.elements.left_menu_socials_btn).click();
+      verifyLogout() {
+        cy.get(this.elements.logged_in_as_txt).should('not.exist');
       }
 
 }
