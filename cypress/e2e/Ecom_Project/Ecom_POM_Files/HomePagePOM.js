@@ -10,8 +10,9 @@ class HomePage
         logout_btn: "a[href='/logout']",
         contact_btn: "",
         logged_in_as_txt: "li:nth-child(10) a:nth-child(1)",
-        homne_btn: "",
-        homne_btn: "",
+        contact_btn: "a[href='/contact_us']",
+        test_cases_btn: "//a[contains(text(),'Test Cases')]",     // xpath
+        products_btn: "a[href='/products']",
       };
 
       verifyHomePage() {
@@ -32,6 +33,18 @@ class HomePage
 
       verifyLogout() {
         cy.get(this.elements.logged_in_as_txt).should('not.exist');
+      }
+
+      openContactPage() {
+        cy.get(this.elements.contact_btn).click();
+      }
+    
+      openTCsPage() {
+        cy.xpath(this.elements.test_cases_btn).click();
+      }
+
+      openProductsPage() {
+        cy.get(this.elements.products_btn).click();
       }
 
 }
