@@ -3,20 +3,21 @@ import HomePage from "../Ecom_POM_Files/HomePagePOM";
 import ContactPage from "../Ecom_POM_Files/ContactPagePOM";
 import TCsPage from "../Ecom_POM_Files/TCsPagePOM";
 import ProductsPage from "../Ecom_POM_Files/ProductsPagePOM";
+import CartPage from "../Ecom_POM_Files/CartPagePOM";
 
 
 describe("Automation Exercise Web Test Suite", () => {
 
 
 
-  it.skip("Register User", () => {
+  it.skip("1. Register User", () => {
    
     cy.visit('http://automationexercise.com/'); // Visit the website login page
 
   });
 
 
-  it.skip("Login Positive Test", () => {
+  it.skip("2. Login Positive Test", () => {
    
     cy.visit('http://automationexercise.com/'); // Visit the website login page
 
@@ -32,7 +33,7 @@ describe("Automation Exercise Web Test Suite", () => {
 
   });
 
-  it.skip("Login Negative Test", () => {
+  it.skip("3. Login Negative Test", () => {
    
     cy.visit('http://automationexercise.com/'); // Visit the website login page
 
@@ -48,7 +49,7 @@ describe("Automation Exercise Web Test Suite", () => {
 
   });
 
-  it.skip("Logout Test", () => {
+  it.skip("4. Logout Test", () => {
    
     cy.visit('http://automationexercise.com/'); // Visit the website login page
 
@@ -66,7 +67,7 @@ describe("Automation Exercise Web Test Suite", () => {
 
   });
 
-  it.skip("Register user with existing email Test", () => {
+  it.skip("5. Register user with existing email Test", () => {
    
     cy.visit('http://automationexercise.com/'); // Visit the website login page
 
@@ -83,7 +84,7 @@ describe("Automation Exercise Web Test Suite", () => {
   });
 
 
-  it.skip("Contact Us Form Test", () => {
+  it.skip("6. Contact Us Form Test", () => {
    
     cy.visit('http://automationexercise.com/'); // Visit the website login page
 
@@ -102,7 +103,7 @@ describe("Automation Exercise Web Test Suite", () => {
   });
 
 
-  it.skip("Test Cases Page", () => {
+  it.skip("7. Test Cases Page", () => {
    
     cy.visit('http://automationexercise.com/'); // Visit the website login page
 
@@ -116,7 +117,7 @@ describe("Automation Exercise Web Test Suite", () => {
   });
 
 
-  it("Verify All Products and product details Test", () => {
+  it.skip("8. Verify All Products and product details Test", () => {
    
     cy.visit('http://automationexercise.com/'); // Visit the website login page
 
@@ -130,6 +131,98 @@ describe("Automation Exercise Web Test Suite", () => {
     pp.verifyProductsDetails() // verify product details are visible
 
   });
+
+
+  it.skip("9. Search Product Test", () => {
+   
+    cy.visit('http://automationexercise.com/'); // Visit the website login page
+
+    const dp = new HomePage(); // Create an instance of DashboardPage
+    dp.verifyHomePage(); // Verify home page is visible successfully
+    dp.openProductsPage(); // open products page
+
+    const pp = new ProductsPage();
+    pp.verifyProductsPage(); // Verify products page is visible successfully
+    pp.searchProduct("Men Tshirt"); // view product details
+    pp.verifySearchProduct() // verify product details are visible
+
+  });
+
+  
+  it.skip("10. Subscribe Email on Home Page Test", () => {
+   
+    cy.visit('http://automationexercise.com/'); // Visit the website login page
+
+    const dp = new HomePage(); // Create an instance of DashboardPage
+    dp.verifyHomePage(); // Verify home page is visible successfully
+    cy.scrollTo('bottom');
+    dp.subEmail("test@mail.com");
+
+  });
+
+
+  it.skip("11. Subscribe Email on Cart Page Test", () => {
+   
+    cy.visit('http://automationexercise.com/'); // Visit the website login page
+
+    const dp = new HomePage(); // Create an instance of DashboardPage
+    dp.verifyHomePage(); // Verify home page is visible successfully
+    dp.CartPage();
+
+    const cc = new CartPage();
+    cy.scrollTo('bottom');
+    cc.subEmail("test@mail.com");
+
+    
+
+  });
+
+
+  it.skip("12. Add Products to Cart Test", () => {
+   
+    cy.visit('http://automationexercise.com/'); // Visit the website login page
+
+    const dp = new HomePage(); // Create an instance of DashboardPage
+    dp.verifyHomePage(); // Verify home page is visible successfully
+    dp.openProductsPage();
+
+    const pp = new ProductsPage();
+    pp.verifyProductsPage(); // Verify products page is visible successfully
+    pp.addProductsToCart(); // 
+
+    const cc = new CartPage();
+    cc.verifyCartProducts();
+
+
+      });
+
+      it("13. Verify Product quantity in Cart Test", () => {
+   
+        cy.visit('http://automationexercise.com/'); // Visit the website login page
+    
+        const dp = new HomePage(); // Create an instance of DashboardPage
+        dp.verifyHomePage(); // Verify home page is visible successfully
+        dp.openProductsPage(); // open products page
+    
+        const pp = new ProductsPage();
+        pp.verifyProductsPage(); // Verify products page is visible successfully
+        pp.searchProduct("Men Tshirt"); // view product details
+        pp.verifySearchProduct() // verify searched product is visible
+        pp.viewProduct(); // view product details
+        pp.buyProductinQuantity(4);
+
+        const cp = new CartPage();
+        cp.verifyCartProductQuantity();
+    
+      });
+    
+  
+
+    
+
+    
+
+
 
 
 
