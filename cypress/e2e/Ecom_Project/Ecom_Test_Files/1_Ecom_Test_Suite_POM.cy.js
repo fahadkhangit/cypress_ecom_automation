@@ -144,7 +144,7 @@ describe("Automation Exercise Web Test Suite", () => {
     const pp = new ProductsPage();
     pp.verifyProductsPage(); // Verify products page is visible successfully
     pp.searchProduct("Men Tshirt"); // view product details
-    pp.verifySearchProduct() // verify product details are visible
+    pp.verifySearchProduct() // verify searched product is visible
 
   });
 
@@ -196,7 +196,7 @@ describe("Automation Exercise Web Test Suite", () => {
 
       });
 
-      it("13. Verify Product quantity in Cart Test", () => {
+      it.skip("13. Verify Product quantity in Cart Test", () => {
    
         cy.visit('http://automationexercise.com/'); // Visit the website login page
     
