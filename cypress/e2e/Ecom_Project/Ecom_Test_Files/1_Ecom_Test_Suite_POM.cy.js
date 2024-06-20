@@ -14,6 +14,13 @@ describe("Automation Exercise Web Test Suite", () => {
    
     cy.visit('http://automationexercise.com/'); // Visit the website login page
 
+    const dp = new HomePage(); // Create an instance of DashboardPage
+    dp.verifyHomePage(); // Verify home page is visible successfully
+    dp.openLoginPage(); // open login page
+
+    const lp = new LoginPage();
+    lp.signup(username, email);
+
   });
 
 
@@ -178,7 +185,7 @@ describe("Automation Exercise Web Test Suite", () => {
   });
 
 
-  it.skip("12. Add Products to Cart Test", () => {
+  it.skip("12. (draft) Add Products to Cart Test", () => {
    
     cy.visit('http://automationexercise.com/'); // Visit the website login page
 
@@ -210,10 +217,38 @@ describe("Automation Exercise Web Test Suite", () => {
         pp.verifySearchProduct() // verify searched product is visible
         pp.viewProduct(); // view product details
         pp.buyProductinQuantity(4);
+        pp.openCartPage();
 
         const cp = new CartPage();
         cp.verifyCartProductQuantity();
     
+      });
+
+
+      it("14. (draft). Add Products to Cart Test", () => {
+   
+        cy.visit('http://automationexercise.com/'); // Visit the website login page
+    
+        const dp = new HomePage(); // Create an instance of DashboardPage
+        dp.verifyHomePage(); // Verify home page is visible successfully
+        dp.openProductsPage();
+    
+        const pp = new ProductsPage();
+        pp.verifyProductsPage(); // Verify products page is visible successfully
+        pp.searchProduct("Men Tshirt"); // view product details
+        pp.verifySearchProduct() // verify searched product is visible
+        pp.viewProduct(); // view product details
+        pp.buyProductinQuantity(4);
+        pp.openCartPage();
+    
+        const cc = new CartPage();
+        cc.verifyCartPage();
+        cc.proceedCheckout();
+        cc.registerUser();
+
+        const lp = new LoginPage();
+        lp.signup('xyz', 'ossoftwaretest@gmail.com');
+        
       });
     
   

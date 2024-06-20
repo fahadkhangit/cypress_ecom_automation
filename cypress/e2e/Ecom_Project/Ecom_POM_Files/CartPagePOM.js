@@ -9,6 +9,9 @@ class CartPage
       cart_list_product1: "a[href='/product_details/1']",
       cart_list_product2: "a[href='/product_details/2']",
       product_quantity: "//button[normalize-space()='4']",     //xpath
+      proceed_checkout: "//a[normalize-space()='Proceed To Checkout']",     //xpath
+      register_login_btn: "//u[normalize-space()='Register / Login']",     //xpath
+      continue_on_cart_btn: "//button[normalize-space()='Continue On Cart']",     //xpath
 
       };
    
@@ -18,8 +21,8 @@ class CartPage
         cy.xpath(this.elements.sub_email_success_txt).should('exist');
       }
 
-      verifyTCsPage() {
-        cy.xpath(this.elements.test_cases_txt).should('exist');
+      verifyCartPage() {
+        cy.xpath(this.elements.proceed_checkout).should('exist');
       }
 
       verifyCartProducts() {
@@ -29,6 +32,14 @@ class CartPage
 
       verifyCartProductQuantity() {
         cy.xpath(this.elements.product_quantity).should('exist');
+      }
+
+      proceedCheckout() {
+        cy.xpath(this.elements.proceed_checkout).click();   
+      }
+
+      registerUser() {
+        cy.xpath(this.elements.register_login_btn).click();
       }
 
 }

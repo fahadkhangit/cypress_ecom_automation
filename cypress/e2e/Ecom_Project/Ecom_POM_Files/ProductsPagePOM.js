@@ -59,11 +59,10 @@ class ProductsPage
       buyProductinQuantity(value) {
         cy.xpath(this.elements.set_product_quantity).clear().type(value);
         cy.xpath(this.elements.add_to_cart_btn).click();
-        cy.xpath(this.elements.view_cart).click();
       }
 
-      addToCart() {
-        
+      openCartPage() {
+        cy.xpath(this.elements.view_cart).click();
       }
 
 }
