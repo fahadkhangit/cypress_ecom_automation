@@ -225,7 +225,7 @@ describe("Automation Exercise Web Test Suite", () => {
       });
 
 
-      it("14. (draft). Add Products to Cart Test", () => {
+      it.skip("14. (draft) Place Order: Register while Checkout Test", () => {
    
         cy.visit('http://automationexercise.com/'); // Visit the website login page
     
@@ -248,6 +248,40 @@ describe("Automation Exercise Web Test Suite", () => {
 
         const lp = new LoginPage();
         lp.signup('xyz', 'ossoftwaretest@gmail.com');
+        
+      });
+
+
+      it("15. (draft) Place Order: Register before Checkout Test", () => {
+   
+        cy.visit('http://automationexercise.com/'); // Visit the website login page
+    
+        const dp = new HomePage(); // Create an instance of DashboardPage
+        dp.verifyHomePage(); // Verify home page is visible successfully
+        dp.openLoginPage(); // open login page
+    
+        const lp = new LoginPage();
+        lp.verifyLoginPage(); // Verify login page is visible successfully
+        lp.login('ossoftwaretest@gmail.com', '123'); // Login to app
+        
+        dp.verifyLogin(); // Verify login on the dashboard page
+        dp.openProductsPage();
+    
+    
+        const pp = new ProductsPage();
+        pp.verifyProductsPage(); // Verify products page is visible successfully
+        pp.searchProduct("Men Tshirt"); // view product details
+        pp.verifySearchProduct() // verify searched product is visible
+        pp.viewProduct(); // view product details
+        pp.buyProductinQuantity(4);
+        pp.openCartPage();
+    
+        const cc = new CartPage();
+        cc.verifyCartPage();
+        cc.proceedCheckout();
+        cc.addCheckoutMessage('Please also add proper bubble wrap');
+        cc.placeOrder('xyz', '123', '123', '12', '1234');
+        cc.verifyOrderPlaced();
         
       });
     

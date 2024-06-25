@@ -12,6 +12,15 @@ class CartPage
       proceed_checkout: "//a[normalize-space()='Proceed To Checkout']",     //xpath
       register_login_btn: "//u[normalize-space()='Register / Login']",     //xpath
       continue_on_cart_btn: "//button[normalize-space()='Continue On Cart']",     //xpath
+      checkout_msg_box: "//textarea[@name='message']",          //xpath
+      pleace_order_btn: "//a[normalize-space()='Place Order']",     //xpath
+      payment_card_name: "input[name='name_on_card']",
+      payment_card_number: "input[name='card_number']",
+      payment_card_cvc: "input[placeholder='ex. 311']",
+      payment_card_expiry: "input[placeholder='MM']",
+      payment_card_year: "input[placeholder='YYYY']",
+      payment_submit_btn: "#submit",
+      order_placed_txt: "//b[normalize-space()='Order Placed!']",   //xpath
 
       };
    
@@ -40,6 +49,28 @@ class CartPage
 
       registerUser() {
         cy.xpath(this.elements.register_login_btn).click();
+      }
+
+      continueOnCart() {
+        cy.xpath(this.elements.continue_on_cart_btn).click();
+      }
+
+      addCheckoutMessage(message) {
+        cy.xpath(this.elements.checkout_msg_box).type(message);
+      }
+
+      placeOrder(name, number, cvc, expiry, year) {
+        cy.xpath(this.elements.pleace_order_btn).click();
+        cy.get(this.elements.payment_card_name).type(name);
+        cy.get(this.elements.payment_card_number).type(number);
+        cy.get(this.elements.payment_card_cvc).type(cvc);
+        cy.get(this.elements.payment_card_expiry).type(expiry);
+        cy.get(this.elements.payment_card_year).type(year);
+        cy.get(this.elements.payment_submit_btn).click();
+      }
+
+      verifyOrderPlaced() {
+        cy.xpath(this.elements.order_placed_txt).should('exist');
       }
 
 }
