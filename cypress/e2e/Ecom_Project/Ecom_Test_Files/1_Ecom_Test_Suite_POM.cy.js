@@ -254,7 +254,7 @@ describe("Automation Exercise Web Test Suite", () => {
 
       it("15. (draft) Place Order: Register before Checkout Test", () => {
    
-        cy.visit('http://automationexercise.com/'); // Visit the website login page
+        cy.visit('/'); // Visit the website login page
     
         const dp = new HomePage(); // Create an instance of DashboardPage
         dp.verifyHomePage(); // Verify home page is visible successfully
