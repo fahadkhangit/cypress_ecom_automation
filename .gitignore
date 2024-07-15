@@ -1,6 +1,15 @@
+# Ignore node_modules directory
 node_modules/
+
+# Ignore cypress screenshots and videos for now
 cypress/screenshots/
 cypress/videos/
+
+# Ignore environment variable files
 .env
+
+# Ignore system files
 .DS_Store
 Thumbs.db
+
+# Ignore the specific Cypress test file

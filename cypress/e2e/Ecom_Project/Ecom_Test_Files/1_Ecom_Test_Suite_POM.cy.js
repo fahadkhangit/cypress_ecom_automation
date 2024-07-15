@@ -24,7 +24,7 @@ describe("Automation Exercise Web Test Suite", () => {
   });
 
 
-  it.skip("2. Login Positive Test", () => {
+  it("2. Login Positive Test", () => {
    
     cy.visit('http://automationexercise.com/'); // Visit the website login page
 
@@ -252,7 +252,7 @@ describe("Automation Exercise Web Test Suite", () => {
       });
 
 
-      it("15. (draft) Place Order: Register before Checkout Test", () => {
+      it.skip("15. (draft) Place Order: Register before Checkout Test", () => {
    
         cy.visit('/'); // Visit the website login page
     
