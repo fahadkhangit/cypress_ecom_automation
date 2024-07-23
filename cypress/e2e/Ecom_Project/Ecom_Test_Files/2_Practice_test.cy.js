@@ -1,3 +1,6 @@
+/// <reference types="cypress" />
+
+
 describe('Practice_test', () => {
 
     it('Practice_test', () => {
