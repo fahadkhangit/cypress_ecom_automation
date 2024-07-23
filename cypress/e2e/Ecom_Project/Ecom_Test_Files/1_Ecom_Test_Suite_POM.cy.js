@@ -6,7 +6,7 @@ import ProductsPage from "../Ecom_POM_Files/ProductsPagePOM";
 import CartPage from "../Ecom_POM_Files/CartPagePOM";
 
 
-describe("Automation Exercise Web Test Suite", () => {
+describe("Automation E2E Web Test Suite", () => {
 
 
 
@@ -34,7 +34,7 @@ describe("Automation Exercise Web Test Suite", () => {
 
     const lp = new LoginPage();
     lp.verifyLoginPage(); // Verify login page is visible successfully
-    lp.login('ossoftwaretest@gmail.com', '123'); // Login to app
+    lp.login('ossoftwaretest@gmail.com', '123'); // Login to app changes 
     
     dp.verifyLogin(); // Verify login on the dashboard page
 
@@ -252,7 +252,7 @@ describe("Automation Exercise Web Test Suite", () => {
       });
 
 
-      it.skip("15. (draft) Place Order: Register before Checkout Test", () => {
+      it.skip("15. Place Order: Register before Checkout Test", () => {
    
         cy.visit('/'); // Visit the website login page
     
@@ -273,8 +273,8 @@ describe("Automation Exercise Web Test Suite", () => {
         pp.searchProduct("Men Tshirt"); // view product details
         pp.verifySearchProduct() // verify searched product is visible
         pp.viewProduct(); // view product details
-        pp.buyProductinQuantity(4);
-        pp.openCartPage();
+        pp.buyProductinQuantity(4);     // buy 4 products
+        pp.openCartPage();      // continue to cart page
     
         const cc = new CartPage();
         cc.verifyCartPage();
